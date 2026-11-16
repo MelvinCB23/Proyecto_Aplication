@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Estudiantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Sistema de Gestión de Estudiantes</h1>
+        <p>API REST Spring Boot &bull; CRUD Completo</p>
+    </header>
+
+    <div id="alert-box" class="alert hidden"></div>
+
+    <section class="card">
+        <h2 id="form-title">Registrar Nuevo Estudiante</h2>
+        <form id="student-form">
+            <input type="hidden" id="student-id">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" placeholder="Ej. Ana López" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo electrónico *</label>
+                    <input type="email" id="correo" placeholder="Ej. ana@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono (10 dígitos) *</label>
+                    <input type="text" id="telefono" maxlength="10" pattern="\d{10}" placeholder="Ej. 5512345678" required>
+                </div>
+                <div class="form-group">
+                    <label for="idioma">Idioma *</label>
+                    <select id="idioma" required>
+                        <option value="">Selecciona un idioma...</option>
+                        <option value="español">Español</option>
+                        <option value="inglés">Inglés</option>
+                        <option value="francés">Francés</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" id="btn-submit" class="btn btn-primary">Guardar Estudiante</button>
+                <button type="button" id="btn-patch" class="btn btn-warning hidden">Actualizar Solo Cambios (PATCH)</button>
+                <button type="button" id="btn-cancel" class="btn btn-secondary hidden">Cancelar Edición</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="card">
+        <div class="table-header">
+            <h2>Lista de Estudiantes</h2>
+            <div class="search-box">
+                <input type="number" id="search-id" placeholder="Buscar por ID..." min="1">
+                <button type="button" id="btn-search" class="btn btn-info">Buscar</button>
+                <button type="button" id="btn-reset-search" class="btn btn-secondary">Ver Todos</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Idioma</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="students-tbody">
+                <tr><td colspan="6" class="empty-msg">Cargando estudiantes...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
